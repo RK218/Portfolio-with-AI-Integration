@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruthvik K | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --teal:#0F6E56;
+    --teal-dark:#085041;
+    --teal-mid:#1D9E75;
+    --teal-light:#E1F5EE;
+    --text:#1a1a1a;
+    --muted:#555;
+    --bg:#f8f7f4;
+    --white:#fff;
+    --border:#e0e0e0;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);}
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--teal);}
+  .nav-links{display:flex;gap:2rem;}
+  .nav-links a{font-size:13px;font-weight:500;letter-spacing:0.06em;color:var(--muted);position:relative;padding:4px 0;transition:color 0.2s;}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--teal);transform:scaleX(0);transition:transform 0.25s;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{transform:scaleX(1);}
+  .resume-pill{padding:6px 18px;border:1px solid var(--teal);border-radius:20px;font-size:12px;font-weight:500;color:var(--teal);letter-spacing:0.06em;transition:all 0.2s;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+  .resume-pill:hover{background:var(--teal);color:white;}
+
+  /* HERO */
+  .hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 5%;}
+  .hero-avatar{width:140px;height:140px;border-radius:50%;background:var(--teal-dark);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:white;margin-bottom:2rem;border:3px solid var(--teal-mid);}
+  .hero-name{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,80px);font-weight:700;color:var(--text);line-height:1.05;margin-bottom:0.5rem;}
+  .hero-name span{color:var(--teal);}
+  .hero-role{display:flex;align-items:center;gap:0.75rem;justify-content:center;margin-bottom:1.5rem;}
+  .hero-dash{width:32px;height:2px;background:var(--teal-mid);}
+  .hero-subtitle{font-size:17px;font-weight:300;color:var(--muted);}
+  .hero-desc{font-size:15px;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:2rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;}
+  .btn{padding:11px 28px;border-radius:2px;font-size:13px;font-weight:500;letter-spacing:0.06em;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;display:inline-block;}
+  .btn-solid{background:var(--teal-dark);color:white;border:none;}
+  .btn-solid:hover{background:var(--teal);}
+  .btn-ghost{border:1.5px solid var(--teal);color:var(--teal);background:none;}
+  .btn-ghost:hover{background:var(--teal);color:white;}
+  .stats-row{display:flex;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);}
+  .stat-cell{flex:1;padding:1.25rem;text-align:center;border-right:1px solid var(--border);}
+  .stat-cell:last-child{border-right:none;}
+  .stat-n{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--teal);}
+  .stat-l{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+  /* SECTIONS */
+  section{padding:4.5rem 5%;}
+  .section-inner{max-width:900px;margin:0 auto;}
+  .section-tag{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.5rem;}
+  .section-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--text);line-height:1.15;margin-bottom:2rem;}
+  .section-heading em{color:var(--teal);font-style:italic;}
+
+  /* ABOUT */
+  .alt-bg{background:var(--white);}
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .pcard{background:var(--white);padding:1.75rem;transition:background 0.2s;}
+  .pcard:hover{background:#f8f7f4;}
+  .pcard-head{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:0.75rem;}
+  .pcard-body{font-size:14px;line-height:1.75;color:var(--muted);}
+  .edu-badge{display:inline-block;font-size:11px;padding:3px 10px;background:var(--teal-light);color:var(--teal-dark);border-radius:20px;margin-top:8px;letter-spacing:0.04em;}
+
+  /* EXPERIENCE */
+  .exp-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.75rem;margin-bottom:1rem;position:relative;overflow:hidden;}
+  .exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal-mid);}
+  .exp-badge{display:inline-block;font-size:11px;padding:2px 10px;background:var(--teal-light);color:var(--teal-dark);border-radius:20px;margin-bottom:0.75rem;letter-spacing:0.04em;}
+  .exp-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:0.5rem;}
+  .exp-body{font-size:13px;line-height:1.75;color:var(--muted);}
+
+  /* SKILLS */
+  .skills-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem;}
+  .skill-pill{padding:7px 18px;background:var(--white);border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--text);transition:all 0.2s;cursor:default;}
+  .skill-pill:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
+
+  /* PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
+  .proj-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.75rem;position:relative;overflow:hidden;transition:transform 0.2s,border-color 0.2s;}
+  .proj-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal-mid);transform:scaleX(0);transition:transform 0.3s;}
+  .proj-card:hover::after{transform:scaleX(1);}
+  .proj-card:hover{transform:translateY(-3px);border-color:#9FE1CB;}
+  .proj-num{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:#e8e8e8;position:absolute;top:0.75rem;right:1.25rem;line-height:1;}
+  .proj-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:0.5rem;}
+  .proj-desc{font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:1rem;}
+  .tag-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+  .ptag{font-size:11px;padding:3px 10px;border:1px solid var(--border);border-radius:20px;color:var(--muted);}
+
+  /* CONTACT */
+  .dark-band{background:var(--teal-dark);padding:4.5rem 5%;}
+  .dark-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+  .dark-tag{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;}
+  .dark-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:white;line-height:1.1;margin-bottom:0.75rem;}
+  .dark-heading em{font-style:italic;}
+  .dark-sub{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.75;}
+  .dark-links{display:flex;flex-direction:column;}
+  .dark-link-item{padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.12);}
+  .dark-link-item:last-child{border-bottom:none;}
+  .dark-link-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+  .dark-link-item a{font-size:14px;color:rgba(255,255,255,0.75);transition:color 0.2s;}
+  .dark-link-item a:hover{color:white;}
+
+  /* RESUME */
+  .resume-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;align-items:center;gap:1.5rem;}
+  .resume-icon{width:48px;height:48px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .resume-icon svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:2;}
+  .resume-text h3{font-size:16px;font-weight:500;color:var(--text);margin-bottom:4px;}
+  .resume-text p{font-size:13px;color:var(--muted);}
+
+  /* FOOTER */
+  footer{background:var(--teal-dark);border-top:1px solid rgba(255,255,255,0.1);padding:1.25rem 5%;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .dark-inner{grid-template-columns:1fr;}
+    .hero-name{font-size:42px;}
+    .stats-row{flex-direction:column;}
+    .stat-cell{border-right:none;border-bottom:1px solid var(--border);}
+    .stat-cell:last-child{border-bottom:none;}
+    section{padding:3rem 5%;}
+  }
+  /* AI STORY POPUP */
+
+.intro-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(6px);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:20px;
+opacity:0;
+animation:fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+.intro-box{
+background:white;
+max-width:780px;
+max-height:85vh;
+overflow:auto;
+border-radius:14px;
+padding:2.4rem 2.6rem;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+font-size:14px;
+line-height:1.75;
+}
+
+.intro-title{
+font-family:'Playfair Display',serif;
+font-size:30px;
+margin-bottom:1rem;
+color:var(--teal-dark);
+}
+
+.intro-box p{
+margin-bottom:12px;
+color:#444;
+}
+
+.intro-box strong{
+color:var(--teal-dark);
+}
+
+.popup-actions{
+margin-top:20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.popup-btn{
+padding:10px 26px;
+background:var(--teal-dark);
+color:white;
+border:none;
+border-radius:4px;
+cursor:pointer;
+font-size:13px;
+}
+
+.popup-btn:hover{
+background:var(--teal);
+}
+
+.popup-skip{
+font-size:12px;
+color:#666;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+  <!-- AI WORKFLOW POPUP -->
+
+<div class="intro-overlay" id="introPopup">
+
+<div class="intro-box">
+
+<div class="intro-title">
+How I Used AI to Design and Ship My Portfolio — Fast
+</div>
+
+<p>
+When I decided to apply for this role, I didn't open Figma first. I opened Claude.
+</p>
+
+<p>
+My challenge was straightforward but real: I had a working HTML portfolio, but it looked like every other developer's GitHub page — functional, not intentional. I needed to transform it into something that communicated design thinking, not just technical ability.
+</p>
+
+<p><strong>Here's the workflow I ran:</strong></p>
+
+<p>
+<strong>1. Design Direction with Claude —</strong>
+I fed Claude my existing HTML code and described the role I was targeting. Instead of tweaking colors, we had a conversation about editorial aesthetics, typographic hierarchy, and what visual language would signal a design-aware engineer to a hiring team.
+</p>
+
+<p>
+<strong>2. Rapid Iteration —</strong>
+What would have taken a full day of trial-and-error in CSS took about 90 minutes. Claude generated the full redesigned portfolio with hover states, sticky navigation, animated project cards, and structured sections.
+</p>
+
+<p>
+<strong>3. Content & UX Writing —</strong>
+I used Claude to refine the copy across sections, tightening project descriptions and restructuring the experience section so it reads as a growth narrative rather than a bullet dump.
+</p>
+
+<p>
+The result: a portfolio that went from a plain HTML file to a structured, typographically intentional, mobile-responsive design — in an afternoon.
+</p>
+
+<p>
+What I took away: AI tools don't replace design judgment. They compress the time between idea and validation so you can spend more cycles on decisions that matter — hierarchy, narrative, and communication.
+</p>
+
+<p>
+That's exactly the kind of AI-accelerated workflow I'm excited to bring to o9.
+</p>
+
+<div class="popup-actions">
+
+<button class="popup-btn" onclick="enterPortfolio()">
+Proceed to Portfolio
+</button>
+
+<div class="popup-skip" onclick="skipPopup()">
+Don't show this again
+</div>
+
+</div>
+
+</div>
+</div>
+
+<nav>
+  <div class="nav-logo">RK</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#resume" class="resume-pill">Resume</a>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-avatar">RK</div>
+  <div class="hero-name">Ruthvik <span>K</span></div>
+  <div class="hero-role">
+    <div class="hero-dash"></div>
+    <div class="hero-subtitle">AI &amp; Machine Learning Engineer</div>
+    <div class="hero-dash"></div>
+  </div>
+  <div class="hero-desc">Crafting intelligent solutions at the intersection of Artificial Intelligence and User Experience Design.</div>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-solid">View My Work</a>
+    <a href="#resume" class="btn btn-ghost">Download Resume</a>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-n">4th</div><div class="stat-l">Year BE</div></div>
+    <div class="stat-cell"><div class="stat-n">3+</div><div class="stat-l">Projects</div></div>
+    <div class="stat-cell"><div class="stat-n">2</div><div class="stat-l">Internships</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-tag">About me</div>
+    <div class="section-heading">Career <em>Objective</em></div>
+    <div class="grid-2">
+      <div class="pcard">
+        <div class="pcard-head">Who I am</div>
+        <div class="pcard-body">Tech enthusiast with skills in Python, Java, Data Analysis, and Machine Learning, focused on applying technical knowledge to build data-driven solutions and continuously developing expertise in AI technologies.</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-head">Education</div>
+        <div class="pcard-body">
+          <div style="font-weight:500;color:#1a1a1a;margin-bottom:4px;">B.E in Artificial Intelligence &amp; ML</div>
+          <div>SJB Institute of Technology</div>
+          <div><span class="edu-badge">2022 – 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-tag">Work</div>
+    <div class="section-heading">Experience</div>
+
+    <div class="exp-card">
+      <span class="exp-badge">Ongoing</span>
+      <div class="exp-title">AI Developer Intern</div>
+      <div class="exp-body">Working on learning skillsets of AI such as Python programming, Data Augmentation using Python and packages such as NumPy, Pandas, Matplotlib, Seaborn, etc. Future work includes 2 mini projects and 2 major projects.</div>
+    </div>
+
+    <div class="exp-card">
+      <span class="exp-badge">Ongoing</span>
+      <div class="exp-title">Full Stack Java Intern</div>
+      <div class="exp-body">Learning skillsets in full stack development which includes frontend skills like HTML, CSS and JavaScript along with backend skills like Java programming language and IDEs like Spring Boot and VS Code. Future work includes 2 mini projects and 2 major projects.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-tag">Expertise</div>
+    <div class="section-heading">Skills &amp; <em>Technologies</em></div>
+    <div class="skills-wrap">
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">Java</div>
+      <div class="skill-pill">Machine Learning</div>
+      <div class="skill-pill">Deep Learning</div>
+      <div class="skill-pill">SQL</div>
+      <div class="skill-pill">UI/UX</div>
+      <div class="skill-pill">HTML/CSS</div>
+      <div class="skill-pill">Generative AI</div>
+      <div class="skill-pill">Cloud</div>
+      <div class="skill-pill">OpenCV</div>
+      <div class="skill-pill">NumPy</div>
+      <div class="skill-pill">Pandas</div>
+      <div class="skill-pill">Gen AI</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-tag">Selected work</div>
+    <div class="section-heading">Projects</div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div class="proj-title">WiFi Controlled Talking Robot</div>
+        <div class="proj-desc">Interactive robot controlled via WiFi for device movements and Bluetooth connectivity for audio interaction.</div>
+        <div class="tag-wrap">
+          <span class="ptag">IoT</span>
+          <span class="ptag">C Language</span>
+          <span class="ptag">Bluetooth</span>
+          <span class="ptag">WiFi</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-title">Tracque</div>
+        <div class="proj-desc">Innovative AI-based multimodal attendance system with student performance prediction analysis using facial recognition, fingerprint, and barcode scanning.</div>
+        <div class="tag-wrap">
+          <span class="ptag">OpenCV</span>
+          <span class="ptag">LBPH</span>
+          <span class="ptag">ESP32</span>
+          <span class="ptag">ZXing</span>
+          <span class="ptag">Python</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Calories Burnt Prediction</div>
+        <div class="proj-desc">Machine learning mini project predicting the best model for calculating calories burned using health parameters.</div>
+        <div class="tag-wrap">
+          <span class="ptag">Machine Learning</span>
+          <span class="ptag">Python</span>
+          <span class="ptag">Data Science</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-tag">Download</div>
+    <div class="section-heading">Resume</div>
+    <div class="resume-card">
+      <div class="resume-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="resume-text">
+        <h3>1JB22AI046 — Ruthvik K</h3>
+        <p>Contact me at <a href="mailto:ruthvik218@gmail.com" style="color:#0F6E56;">ruthvik218@gmail.com</a> for a copy of my resume.</p>
+      </div>
+      <a href="1JB22AI046 _ RUTHVIK K_ RESUME.pdf" class="btn btn-solid" style="margin-left:auto;white-space:nowrap;">Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" class="dark-band">
+  <div class="dark-inner">
+    <div>
+      <div class="dark-tag">Get in touch</div>
+      <div class="dark-heading">Let's work <em>together</em></div>
+      <div class="dark-sub">Have a project in mind? I'd love to hear from you. Reach out and let's build something intelligent together.</div>
+    </div>
+    <div class="dark-links">
+      <div class="dark-link-item">
+        <div class="dark-link-label">Email</div>
+        <a href="mailto:ruthvik218@gmail.com">ruthvik218@gmail.com</a>
+      </div>
+      <div class="dark-link-item">
+        <div class="dark-link-label">GitHub</div>
+        <a href="https://github.com/RK218" target="_blank" rel="noopener">github.com/RK218</a>
+      </div>
+      <div class="dark-link-item">
+        <div class="dark-link-label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/ruthvik-k-21082k4" target="_blank" rel="noopener">linkedin.com/in/ruthvik-k-21082k4</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Ruthvik K.</footer>
+<script>
+
+window.onload=function(){
+
+const popup=document.getElementById("introPopup");
+
+if(localStorage.getItem("hidePopup")){
+popup.style.display="none";
+}
+else{
+document.body.style.overflow="hidden";
+}
+
+}
+
+function enterPortfolio(){
+const popup=document.getElementById("introPopup");
+popup.style.opacity="0";
+
+setTimeout(()=>{
+popup.style.display="none";
+document.body.style.overflow="auto";
+},300);
+}
+
+function skipPopup(){
+localStorage.setItem("hidePopup","true");
+enterPortfolio();
+}
+
+</script>
+
+</body>
+</html>
