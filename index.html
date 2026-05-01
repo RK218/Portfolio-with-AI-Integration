@@ -1,496 +1,505 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ruthvik K | Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  :root{
-    --teal:#0F6E56;
-    --teal-dark:#085041;
-    --teal-mid:#1D9E75;
-    --teal-light:#E1F5EE;
-    --text:#1a1a1a;
-    --muted:#555;
-    --bg:#f8f7f4;
-    --white:#fff;
-    --border:#e0e0e0;
-  }
-  html{scroll-behavior:smooth;}
-  body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);}
-  a{color:inherit;text-decoration:none;}
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
-  /* NAV */
-  nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:56px;}
-  .nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--teal);}
-  .nav-links{display:flex;gap:2rem;}
-  .nav-links a{font-size:13px;font-weight:500;letter-spacing:0.06em;color:var(--muted);position:relative;padding:4px 0;transition:color 0.2s;}
-  .nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--teal);transform:scaleX(0);transition:transform 0.25s;}
-  .nav-links a:hover{color:var(--teal);}
-  .nav-links a:hover::after{transform:scaleX(1);}
-  .resume-pill{padding:6px 18px;border:1px solid var(--teal);border-radius:20px;font-size:12px;font-weight:500;color:var(--teal);letter-spacing:0.06em;transition:all 0.2s;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
-  .resume-pill:hover{background:var(--teal);color:white;}
+:root{
+  --bg: #faf8f4;
+  --text: #0d1b2a;
+  --card: #ffffff;
+  --accent: #008080;
+  --accent2: #005f5f;
+  --secondary: #e2ddd6;
+  --tagbg: #008080;
+  --tagtext: #ffffff;
+  --muted: #6b7280;
+  --shadow: rgba(0,0,0,0.07);
+  --nav-bg: rgba(250,248,244,0.92);
+}
 
-  /* HERO */
-  .hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 5%;}
-  .hero-avatar{width:140px;height:140px;border-radius:50%;background:var(--teal-dark);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:white;margin-bottom:2rem;border:3px solid var(--teal-mid);}
-  .hero-name{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,80px);font-weight:700;color:var(--text);line-height:1.05;margin-bottom:0.5rem;}
-  .hero-name span{color:var(--teal);}
-  .hero-role{display:flex;align-items:center;gap:0.75rem;justify-content:center;margin-bottom:1.5rem;}
-  .hero-dash{width:32px;height:2px;background:var(--teal-mid);}
-  .hero-subtitle{font-size:17px;font-weight:300;color:var(--muted);}
-  .hero-desc{font-size:15px;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:2rem;}
-  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;}
-  .btn{padding:11px 28px;border-radius:2px;font-size:13px;font-weight:500;letter-spacing:0.06em;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;display:inline-block;}
-  .btn-solid{background:var(--teal-dark);color:white;border:none;}
-  .btn-solid:hover{background:var(--teal);}
-  .btn-ghost{border:1.5px solid var(--teal);color:var(--teal);background:none;}
-  .btn-ghost:hover{background:var(--teal);color:white;}
-  .stats-row{display:flex;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);}
-  .stat-cell{flex:1;padding:1.25rem;text-align:center;border-right:1px solid var(--border);}
-  .stat-cell:last-child{border-right:none;}
-  .stat-n{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--teal);}
-  .stat-l{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+body.dark{
+  --bg: #0b0f1a;
+  --text: #e8e3db;
+  --card: #131929;
+  --accent: #2dd4bf;
+  --accent2: #0f766e;
+  --secondary: #1e2a3a;
+  --tagbg: #0f4c4c;
+  --tagtext: #2dd4bf;
+  --muted: #8b99ab;
+  --shadow: rgba(0,0,0,0.3);
+  --nav-bg: rgba(11,15,26,0.95);
+}
 
-  /* SECTIONS */
-  section{padding:4.5rem 5%;}
-  .section-inner{max-width:900px;margin:0 auto;}
-  .section-tag{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.5rem;}
-  .section-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--text);line-height:1.15;margin-bottom:2rem;}
-  .section-heading em{color:var(--teal);font-style:italic;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{
+  scroll-behavior: smooth;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .4s,color .4s;overflow-x:hidden}
 
-  /* ABOUT */
-  .alt-bg{background:var(--white);}
-  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-  .pcard{background:var(--white);padding:1.75rem;transition:background 0.2s;}
-  .pcard:hover{background:#f8f7f4;}
-  .pcard-head{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:0.75rem;}
-  .pcard-body{font-size:14px;line-height:1.75;color:var(--muted);}
-  .edu-badge{display:inline-block;font-size:11px;padding:3px 10px;background:var(--teal-light);color:var(--teal-dark);border-radius:20px;margin-top:8px;letter-spacing:0.04em;}
 
-  /* EXPERIENCE */
-  .exp-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.75rem;margin-bottom:1rem;position:relative;overflow:hidden;}
-  .exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal-mid);}
-  .exp-badge{display:inline-block;font-size:11px;padding:2px 10px;background:var(--teal-light);color:var(--teal-dark);border-radius:20px;margin-bottom:0.75rem;letter-spacing:0.04em;}
-  .exp-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:0.5rem;}
-  .exp-body{font-size:13px;line-height:1.75;color:var(--muted);}
+.cursor-glow{
+  position:fixed;width:140px;height:140px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle, var(--accent), transparent 65%);
+  opacity:0.18;transform:translate(-50%,-50%);z-index:9999;transition:opacity .3s;
+}
 
-  /* SKILLS */
-  .skills-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem;}
-  .skill-pill{padding:7px 18px;background:var(--white);border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--text);transition:all 0.2s;cursor:default;}
-  .skill-pill:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
+nav{
+  position:fixed;width:100%;top:0;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 7%;background:var(--nav-bg);border-bottom:1px solid var(--secondary);
+  z-index:1000;backdrop-filter:blur(12px);transition:background .4s,border-color .4s;
+}
+nav .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--accent);letter-spacing:1px}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul li a{
+  text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;
+  transition:.3s;letter-spacing:0.3px;
+}
+nav ul li a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.resume-btn{
+  padding:8px 20px;background:var(--accent);color:#fff;border-radius:20px;
+  text-decoration:none;font-size:13px;font-weight:600;transition:.3s;
+}
+.resume-btn:hover{background:var(--accent2);transform:translateY(-1px)}
 
-  /* PROJECTS */
-  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
-  .proj-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.75rem;position:relative;overflow:hidden;transition:transform 0.2s,border-color 0.2s;}
-  .proj-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal-mid);transform:scaleX(0);transition:transform 0.3s;}
-  .proj-card:hover::after{transform:scaleX(1);}
-  .proj-card:hover{transform:translateY(-3px);border-color:#9FE1CB;}
-  .proj-num{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:#e8e8e8;position:absolute;top:0.75rem;right:1.25rem;line-height:1;}
-  .proj-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:0.5rem;}
-  .proj-desc{font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:1rem;}
-  .tag-wrap{display:flex;flex-wrap:wrap;gap:6px;}
-  .ptag{font-size:11px;padding:3px 10px;border:1px solid var(--border);border-radius:20px;color:var(--muted);}
 
-  /* CONTACT */
-  .dark-band{background:var(--teal-dark);padding:4.5rem 5%;}
-  .dark-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
-  .dark-tag{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;}
-  .dark-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:white;line-height:1.1;margin-bottom:0.75rem;}
-  .dark-heading em{font-style:italic;}
-  .dark-sub{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.75;}
-  .dark-links{display:flex;flex-direction:column;}
-  .dark-link-item{padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.12);}
-  .dark-link-item:last-child{border-bottom:none;}
-  .dark-link-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
-  .dark-link-item a{font-size:14px;color:rgba(255,255,255,0.75);transition:color 0.2s;}
-  .dark-link-item a:hover{color:white;}
+.theme-toggle{
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+}
+.toggle-label{font-size:12px;color:var(--muted);font-weight:500;user-select:none;transition:color .3s}
+.toggle-track{
+  width:44px;height:24px;background:var(--secondary);border-radius:12px;
+  position:relative;cursor:pointer;transition:background .4s;border:2px solid var(--secondary);
+}
+.toggle-track.on{background:var(--accent)}
+.toggle-thumb{
+  position:absolute;top:2px;left:2px;width:16px;height:16px;background:#fff;border-radius:50%;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .3s;
+  box-shadow:0 1px 4px rgba(0,0,0,0.2);
+}
+.toggle-track.on .toggle-thumb{transform:translateX(20px)}
+.toggle-icon{font-size:14px}
 
-  /* RESUME */
-  .resume-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;align-items:center;gap:1.5rem;}
-  .resume-icon{width:48px;height:48px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .resume-icon svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:2;}
-  .resume-text h3{font-size:16px;font-weight:500;color:var(--text);margin-bottom:4px;}
-  .resume-text p{font-size:13px;color:var(--muted);}
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:120px 8% 80px;position:relative;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 30%, color-mix(in srgb, var(--accent) 8%, transparent), transparent);
+  pointer-events:none;
+}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(42px,7vw,72px);font-weight:800;line-height:1.05;letter-spacing:-1px}
+.hero h1 span{color:var(--accent)}
+.hero .profile-pic{
+  width:220px;height:220px;border-radius:60%;object-fit:cover;
+  margin:28px 0 20px;border:3px solid var(--accent);
+  box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 15%,transparent);
+}
+.hero p{color:var(--muted);max-width:520px;line-height:1.75;font-size:16px;margin-bottom:36px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{
+  padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px;transition:.3s;
+}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn.secondary{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn.secondary:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
 
-  /* FOOTER */
-  footer{background:var(--teal-dark);border-top:1px solid rgba(255,255,255,0.1);padding:1.25rem 5%;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;}
+section{
+  min-height:100vh;            
+  padding:120px 7%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;      
+  scroll-snap-align:start;     
+  scroll-margin-top:80px;     
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:700;
+  margin-bottom:40px;position:relative;padding-bottom:14px;letter-spacing:-0.5px;
+}
+.section-title::after{
+  content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;
+  background:var(--accent);border-radius:2px;
+}
 
-  /* RESPONSIVE */
-  @media(max-width:768px){
-    .nav-links{display:none;}
-    .dark-inner{grid-template-columns:1fr;}
-    .hero-name{font-size:42px;}
-    .stats-row{flex-direction:column;}
-    .stat-cell{border-right:none;border-bottom:1px solid var(--border);}
-    .stat-cell:last-child{border-bottom:none;}
-    section{padding:3rem 5%;}
-  }
-  /* AI STORY POPUP */
+.grid{display:flex;flex-direction:column;gap:22px}
+.card{
+  background:var(--card);padding:28px;border-radius:16px;border:1px solid var(--secondary);
+  box-shadow:0 4px 20px var(--shadow);transition:transform .3s,box-shadow .3s,border-color .4s,background .4s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 32px var(--shadow)}
+.card h3{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:10px;font-size:18px}
+.card h4{margin-top:14px;font-size:13px;color:var(--accent);font-weight:600}
+.card p{color:var(--muted);line-height:1.7;font-size:15px}
 
-.intro-overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(6px);
+.tag{
+  display:inline-block;padding:4px 12px;background:color-mix(in srgb,var(--tagbg) 15%,transparent);
+  color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+  border-radius:20px;font-size:11px;font-weight:600;margin:4px 4px 0 0;letter-spacing:0.3px;
+  transition:background .3s,color .3s;
+}
+
+.project-images{
+  display:flex;gap:10px;margin-top:16px;flex-wrap:nowrap;overflow:hidden;
+}
+.project-images img{
+  width:800px;height:800px;object-fit:contain;border-radius:20px;
+  border:1px solid var(--secondary);flex-shrink:0;transition:transform .3s;
+}
+.project-images img:hover{transform:scale(1.03)}
+
+.skills-container{
 display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-padding:20px;
-opacity:0;
-animation:fadeIn 0.4s forwards;
+flex-direction:column;
+gap:20px;
+max-width:700px;
 }
 
-@keyframes fadeIn{
-to{opacity:1;}
+.skill span{
+font-weight:600;
+margin-bottom:5px;
+display:block;
 }
 
-.intro-box{
-background:white;
-max-width:780px;
-max-height:85vh;
-overflow:auto;
-border-radius:14px;
-padding:2.4rem 2.6rem;
-box-shadow:0 30px 80px rgba(0,0,0,0.3);
-font-size:14px;
-line-height:1.75;
+.progress{
+width:100%;
+height:10px;
+background:var(--secondary);
+border-radius:10px;
+overflow:hidden;
 }
 
-.intro-title{
-font-family:'Playfair Display',serif;
-font-size:30px;
-margin-bottom:1rem;
-color:var(--teal-dark);
+.bar{
+height:100%;
+background:var(--accent);
+border-radius:10px;
+transition:width 1s ease;
 }
 
-.intro-box p{
-margin-bottom:12px;
-color:#444;
-}
-
-.intro-box strong{
-color:var(--teal-dark);
-}
-
-.popup-actions{
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 margin-top:20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:10px;
 }
 
-.popup-btn{
-padding:10px 26px;
-background:var(--teal-dark);
-color:white;
-border:none;
-border-radius:4px;
-cursor:pointer;
-font-size:13px;
+.contact-card{
+background:var(--card);
+padding:25px;
+border-radius:15px;
+border:1px solid var(--secondary);
+text-align:center;
+text-decoration:none;
+color:var(--text);
+transition:.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-.popup-btn:hover{
-background:var(--teal);
+.contact-card:hover{
+transform:translateY(-8px);
+border-color:var(--accent);
 }
 
-.popup-skip{
-font-size:12px;
-color:#666;
-cursor:pointer;
+.contact-card .icon{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.contact-card h3{
+margin-bottom:5px;
+font-size:18px;
+}
+
+.contact-card p{
+font-size:14px;
+color:gray;
+}
+
+footer{text-align:center;padding:24px;border-top:1px solid var(--secondary);color:var(--muted);font-size:13px}
+
+.prize{
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+  background:color-mix(in srgb,var(--accent) 10%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
+  padding:5px 12px;border-radius:20px;font-size:12px;color:var(--accent);font-weight:600;
+}
+
+@media(max-width:768px){
+  nav ul{display:none}
+  .project-images img{height:80px}
 }
 </style>
 </head>
 <body>
-  <!-- AI WORKFLOW POPUP -->
 
-<div class="intro-overlay" id="introPopup">
-
-<div class="intro-box">
-
-<div class="intro-title">
-How I Used AI to Design and Ship My Portfolio — Fast
-</div>
-
-<p>
-When I decided to apply for this role, I didn't open Figma first. I opened Claude.
-</p>
-
-<p>
-My challenge was straightforward but real: I had a working HTML portfolio, but it looked like every other developer's GitHub page — functional, not intentional. I needed to transform it into something that communicated design thinking, not just technical ability.
-</p>
-
-<p><strong>Here's the workflow I ran:</strong></p>
-
-<p>
-<strong>1. Design Direction with Claude —</strong>
-I fed Claude my existing HTML code and described the role I was targeting. Instead of tweaking colors, we had a conversation about editorial aesthetics, typographic hierarchy, and what visual language would signal a design-aware engineer to a hiring team.
-</p>
-
-<p>
-<strong>2. Rapid Iteration —</strong>
-What would have taken a full day of trial-and-error in CSS took about 90 minutes. Claude generated the full redesigned portfolio with hover states, sticky navigation, animated project cards, and structured sections.
-</p>
-
-<p>
-<strong>3. Content & UX Writing —</strong>
-I used Claude to refine the copy across sections, tightening project descriptions and restructuring the experience section so it reads as a growth narrative rather than a bullet dump.
-</p>
-
-<p>
-The result: a portfolio that went from a plain HTML file to a structured, typographically intentional, mobile-responsive design — in an afternoon.
-</p>
-
-<p>
-What I took away: AI tools don't replace design judgment. They compress the time between idea and validation so you can spend more cycles on decisions that matter — hierarchy, narrative, and communication.
-</p>
-
-<p>
-That's exactly the kind of AI-accelerated workflow I'm excited to bring to o9.
-</p>
-
-<div class="popup-actions">
-
-<button class="popup-btn" onclick="enterPortfolio()">
-Proceed to Portfolio
-</button>
-
-<div class="popup-skip" onclick="skipPopup()">
-Don't show this again
-</div>
-
-</div>
-
-</div>
-</div>
+<div class="cursor-glow" id="cursor"></div>
 
 <nav>
-  <div class="nav-logo">RK</div>
-  <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <div class="logo"><i>RK</i></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+      <span class="toggle-icon">☀</span>
+      <div class="toggle-track" id="toggleTrack">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="toggle-icon">🌚</span>
+    </div>
+    <a href="#resume" class="resume-btn">Resume</a>
   </div>
-  <a href="#resume" class="resume-pill">Resume</a>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-avatar">RK</div>
-  <div class="hero-name">Ruthvik <span>K</span></div>
-  <div class="hero-role">
-    <div class="hero-dash"></div>
-    <div class="hero-subtitle">AI &amp; Machine Learning Engineer</div>
-    <div class="hero-dash"></div>
-  </div>
-  <div class="hero-desc">Crafting intelligent solutions at the intersection of Artificial Intelligence and User Experience Design.</div>
-  <div class="hero-btns">
-    <a href="#projects" class="btn btn-solid">View My Work</a>
-    <a href="#resume" class="btn btn-ghost">Download Resume</a>
-  </div>
-  <div class="stats-row">
-    <div class="stat-cell"><div class="stat-n">4th</div><div class="stat-l">Year BE</div></div>
-    <div class="stat-cell"><div class="stat-n">3+</div><div class="stat-l">Projects</div></div>
-    <div class="stat-cell"><div class="stat-n">2</div><div class="stat-l">Internships</div></div>
-  </div>
+<section class="hero" id="home">
+  <h1>Ruthvik <span>K</span></h1>
+  <img src="images\Profile.jpeg" alt="Ruthvik K" class="profile-pic">
+  <p>AI & Software Engineer focused on building reliable systems, debugging issues, and delivering stable real-world solutions.Skilled in Python, SQL, and problem-solving with a strong interest in production support and system reliability.</p>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="alt-bg">
-  <div class="section-inner">
-    <div class="section-tag">About me</div>
-    <div class="section-heading">Career <em>Objective</em></div>
-    <div class="grid-2">
-      <div class="pcard">
-        <div class="pcard-head">Who I am</div>
-        <div class="pcard-body">Tech enthusiast with skills in Python, Java, Data Analysis, and Machine Learning, focused on applying technical knowledge to build data-driven solutions and continuously developing expertise in AI technologies.</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-head">Education</div>
-        <div class="pcard-body">
-          <div style="font-weight:500;color:#1a1a1a;margin-bottom:4px;">B.E in Artificial Intelligence &amp; ML</div>
-          <div>SJB Institute of Technology</div>
-          <div><span class="edu-badge">2022 – 2026</span></div>
-        </div>
-      </div>
+<section id="about">
+  <h2 class="section-title">Career Objective</h2>
+  <div class="grid">
+    <div class="card">
+      <p>Tech enthusiast with skills in Python, Java, Data analysis and machine learning, focused on applying technical knowledge to build data-driven solutions and continuously developing expertise in AI technologies.</p>
+    </div>
+    <div class="card">
+      <h3>Education</h3>
+      <p>B.E in Artificial Intelligence &amp; Machine Learning</p>
+      <p style="margin-top:6px;color:var(--accent);font-weight:800">SJB Institute of Technology (2022–2026)</p>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
-  <div class="section-inner">
-    <div class="section-tag">Work</div>
-    <div class="section-heading">Experience</div>
-
-    <div class="exp-card">
-      <span class="exp-badge">Ongoing</span>
-      <div class="exp-title">AI Developer Intern</div>
-      <div class="exp-body">Working on learning skillsets of AI such as Python programming, Data Augmentation using Python and packages such as NumPy, Pandas, Matplotlib, Seaborn, etc. Future work includes 2 mini projects and 2 major projects.</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="grid">
+    <div class="card">
+      <h3> <span style="font-size:30px;color:var(--accent);font-weight:600">AI Developer Intern</span></h3>
+      <p>Working on learning skillsets of AI such as Python programming, Data Augmentation using Python and packages such as numpy, pandas, matplotlib, seaborn, etc.</p>
     </div>
-
-    <div class="exp-card">
-      <span class="exp-badge">Ongoing</span>
-      <div class="exp-title">Full Stack Java Intern</div>
-      <div class="exp-body">Learning skillsets in full stack development which includes frontend skills like HTML, CSS and JavaScript along with backend skills like Java programming language and IDEs like Spring Boot and VS Code. Future work includes 2 mini projects and 2 major projects.</div>
+    <div class="card">
+      <h3> <span style="font-size:30px;color:var(--accent);font-weight:600">Full Stack JAVA Intern</span></h3>
+      <p>Learning skillsets in full stack development which includes frontend skills like HTML, CSS and JavaScript along with backend skills like Java programming language and IDEs like Springboot and VS Code.</p>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="alt-bg">
-  <div class="section-inner">
-    <div class="section-tag">Expertise</div>
-    <div class="section-heading">Skills &amp; <em>Technologies</em></div>
-    <div class="skills-wrap">
-      <div class="skill-pill">Python</div>
-      <div class="skill-pill">Java</div>
-      <div class="skill-pill">Machine Learning</div>
-      <div class="skill-pill">Deep Learning</div>
-      <div class="skill-pill">SQL</div>
-      <div class="skill-pill">UI/UX</div>
-      <div class="skill-pill">HTML/CSS</div>
-      <div class="skill-pill">Generative AI</div>
-      <div class="skill-pill">Cloud</div>
-      <div class="skill-pill">OpenCV</div>
-      <div class="skill-pill">NumPy</div>
-      <div class="skill-pill">Pandas</div>
-      <div class="skill-pill">Gen AI</div>
-    </div>
-  </div>
-</section>
+<section id="skills">
+<h2 class="section-title">Skills</h2>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-tag">Selected work</div>
-    <div class="section-heading">Projects</div>
-    <div class="proj-grid">
+<div class="skills-container">
 
-      <div class="proj-card">
-        <div class="proj-num">01</div>
-        <div class="proj-title">WiFi Controlled Talking Robot</div>
-        <div class="proj-desc">Interactive robot controlled via WiFi for device movements and Bluetooth connectivity for audio interaction.</div>
-        <div class="tag-wrap">
-          <span class="ptag">IoT</span>
-          <span class="ptag">C Language</span>
-          <span class="ptag">Bluetooth</span>
-          <span class="ptag">WiFi</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-num">02</div>
-        <div class="proj-title">Tracque</div>
-        <div class="proj-desc">Innovative AI-based multimodal attendance system with student performance prediction analysis using facial recognition, fingerprint, and barcode scanning.</div>
-        <div class="tag-wrap">
-          <span class="ptag">OpenCV</span>
-          <span class="ptag">LBPH</span>
-          <span class="ptag">ESP32</span>
-          <span class="ptag">ZXing</span>
-          <span class="ptag">Python</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-num">03</div>
-        <div class="proj-title">Calories Burnt Prediction</div>
-        <div class="proj-desc">Machine learning mini project predicting the best model for calculating calories burned using health parameters.</div>
-        <div class="tag-wrap">
-          <span class="ptag">Machine Learning</span>
-          <span class="ptag">Python</span>
-          <span class="ptag">Data Science</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- RESUME -->
-<section id="resume" class="alt-bg">
-  <div class="section-inner">
-    <div class="section-tag">Download</div>
-    <div class="section-heading">Resume</div>
-    <div class="resume-card">
-      <div class="resume-icon">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <div class="resume-text">
-        <h3>1JB22AI046 — Ruthvik K</h3>
-        <p>Contact me at <a href="mailto:ruthvik218@gmail.com" style="color:#0F6E56;">ruthvik218@gmail.com</a> for a copy of my resume.</p>
-      </div>
-      <a href="1JB22AI046 _ RUTHVIK K_ RESUME.pdf" class="btn btn-solid" style="margin-left:auto;white-space:nowrap;">Download PDF</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<div id="contact" class="dark-band">
-  <div class="dark-inner">
-    <div>
-      <div class="dark-tag">Get in touch</div>
-      <div class="dark-heading">Let's work <em>together</em></div>
-      <div class="dark-sub">Have a project in mind? I'd love to hear from you. Reach out and let's build something intelligent together.</div>
-    </div>
-    <div class="dark-links">
-      <div class="dark-link-item">
-        <div class="dark-link-label">Email</div>
-        <a href="mailto:ruthvik218@gmail.com">ruthvik218@gmail.com</a>
-      </div>
-      <div class="dark-link-item">
-        <div class="dark-link-label">GitHub</div>
-        <a href="https://github.com/RK218" target="_blank" rel="noopener">github.com/RK218</a>
-      </div>
-      <div class="dark-link-item">
-        <div class="dark-link-label">LinkedIn</div>
-        <a href="https://www.linkedin.com/in/ruthvik-k-21082k4" target="_blank" rel="noopener">linkedin.com/in/ruthvik-k-21082k4</a>
-      </div>
-    </div>
-  </div>
+<div class="skill">
+<span>Python</span>
+<div class="progress"><div class="bar" style="width:90%"></div></div>
 </div>
 
-<footer>© 2026 Ruthvik K.</footer>
+<div class="skill">
+<span>Java</span>
+<div class="progress"><div class="bar" style="width:80%"></div></div>
+</div>
+
+<div class="skill">
+<span>Machine Learning</span>
+<div class="progress"><div class="bar" style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+<span>UI/UX</span>
+<div class="progress"><div class="bar" style="width:75%"></div></div>
+</div>
+
+<div class="skill">
+<span>SQL</span>
+<div class="progress"><div class="bar" style="width:70%"></div></div>
+</div>
+
+<div class="skill">
+<span>C/C++</span>
+<div class="progress"><div class="bar" style="width:65%"></div></div>
+</div>
+
+<div class="skill">
+<span>HTML/CSS/JS</span>
+<div class="progress"><div class="bar" style="width:80%"></div></div>
+</div>
+
+<div class="skill">
+<span>Cloud computing</span>
+<div class="progress"><div class="bar" style="width:30%"></div></div>
+</div>
+
+<div class="skill">
+<span>Generative AI</span>
+<div class="progress"><div class="bar" style="width:30%"></div></div>
+</div>
+
+<div class="skill">
+<span>Natural Language Processing</span>
+<div class="progress"><div class="bar" style="width:30%"></div></div>
+</div>
+
+<div class="skill">
+<span>Git / Github</span>
+<div class="progress"><div class="bar" style="width:75%"></div></div>
+</div>
+
+<div class="skill" >
+<span>Production Support Skills</span>
+<span> SQL Querying & Debugging</span>
+<div class="progress"><div class="bar" style="width:75%"></div></div>
+</div>
+<div class="skill" >
+<span>Basic Log Analysis</span>  
+<div class="progress"><div class="bar" style="width:30%"></div></div>
+</div>
+<div class="skill">
+<span>API Fundamentals</span> 
+<div class="progress"><div class="bar" style="width:40%"></div></div> 
+</div>
+<div class="skill">
+<span>Error Handling & Troubleshooting</span>  
+<div class="progress"><div class="bar" style="width:85%"></div></div>
+</div>
+<div class="skill">
+<span>System Monitoring Basics</span>  
+<div class="progress"><div class="bar" style="width:25%"></div></div>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>WiFi Controlled Talking Robot</h3>
+      <p>Interactive robot controlled via WiFi for device movements and Bluetooth connectivity for audio interaction.</p>
+      <div style="margin-top:10px">
+        <span class="tag">IoT</span>
+        <span class="tag">C Language</span>
+        <span class="tag">Bluetooth</span>
+      </div>
+      <div class="prize">🥈 2nd Prize — SJBIT Exhibition 2023</div>
+    </div>
+
+    <div class="card">
+      <h3>Tracque</h3>
+      <p>Innovative AI-based multimodal attendance system with student performance prediction analysis.</p>
+      <div style="margin-top:10px">
+        <span class="tag">Facial Recognition (LBPH + OpenCV)</span>
+        <span class="tag">Fingerprint (ESP32)</span>
+        <span class="tag">Barcode (ZXing)</span>
+      </div>
+      <div class="prize">🥈 2nd Prize — SJBIT Project Expo 2025</div>
+    </div>
+
+    <div class="card">
+      <h3>Calories Burnt Prediction</h3>
+      <p>Machine learning mini-project predicting the best model to choose for calculating calories burned using health parameters.</p>
+      <div style="margin-top:10px">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Python</span>
+      </div>
+        <div style="margin-top:10px" align="right">
+        <a href="https://github.com/RK218/Calories-Burnt-Prediction" target="_blank" class="btn secondary">GitHub</a>
+        <a href="https://github.com/RK218/Calories-Burnt-Prediction/blob/main/Calories_Burnt_Prediction_using_Machine_Learning%20(2).ipynb" target="_blank" class="btn primary">Code</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>CineSphere</h3>
+      <p>A movie recommendation interface which suggests your next binge-worthy content based on the selected language and genre.</p>
+      <div style="margin-top:10px">
+        <span class="tag">Python</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">JavaScript</span>
+      </div>
+        <div style="margin-top:10px" align="right">
+        <a href="https://github.com/RK218/CineSphere" target="_blank" class="btn secondary">GitHub</a>
+        <a href="https://cinesphere-rkwu3wkys2rasibv8cpstu.streamlit.app/" target="_blank" class="btn primary">Live Demo</a>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="resume">
+  <h2 class="section-title">Resume</h2>
+  <div class="card">
+    <a href="1JB22AI046 _ RUTHVIK K_ RESUME.pdf" style="color:var(--accent);font-weight:600;text-decoration:none">📄 Click Here to View Resume</a>
+    <p style="margin-top:8px">Contact me for a copy. <b>Details mentioned below.</b></p>
+  </div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Let's Connect</h2>
+
+<div class="contact-grid">
+
+<a href="https://mailto:ruthvik218@gmail.com" target="_blank" class="contact-card">
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<p>ruthvik218@gmail.com</p>
+</a>
+
+<a href="https://github.com/RK218" target="_blank" class="contact-card">
+<div class="icon">👾</div>
+<h3>GitHub</h3>
+<p>github.com/RK218</p>
+</a>
+
+<a href="https://www.linkedin.com/in/ruthvik-k-21082k4" target="_blank" class="contact-card">
+<div class="icon">💼</div>
+<h3>LinkedIn</h3>
+<p>linkedin.com/in/ruthvik-k</p>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+  <p>© 2026 Ruthvik K — Built with skillful love and a lot of caffeine😅</p>
+</footer>
+
 <script>
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
 
-window.onload=function(){
 
-const popup=document.getElementById("introPopup");
-
-if(localStorage.getItem("hidePopup")){
-popup.style.display="none";
-}
-else{
-document.body.style.overflow="hidden";
-}
-
-}
-
-function enterPortfolio(){
-const popup=document.getElementById("introPopup");
-popup.style.opacity="0";
-
-setTimeout(()=>{
-popup.style.display="none";
-document.body.style.overflow="auto";
-},300);
+function toggleTheme(){
+  const isDark = document.body.classList.toggle("dark");
+  const track = document.getElementById("toggleTrack");
+  track.classList.toggle("on", isDark);
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-function skipPopup(){
-localStorage.setItem("hidePopup","true");
-enterPortfolio();
-}
 
+(function(){
+  const saved = localStorage.getItem("theme");
+  if(saved === "dark"){
+    document.body.classList.add("dark");
+    document.getElementById("toggleTrack").classList.add("on");
+  }
+})();
 </script>
-
 </body>
 </html>
